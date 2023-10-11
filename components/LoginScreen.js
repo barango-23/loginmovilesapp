@@ -6,6 +6,7 @@ import {styles} from '../assets/styles/allstyles';
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth'
 import {initializeApp} from 'firebase/app';
 import { firebaseConfig } from '../firebaseConfig';
+import { set } from 'react-hook-form';
 
 export default function LoginScreen({navigation}){
     const [email, setEmail] = useState('');
@@ -34,6 +35,7 @@ export default function LoginScreen({navigation}){
     const handleSignIn = () =>{
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential)=>{
+  
             console.log("Conexión exitosa ...");
             navigation.navigate('Home',{email:email})
         })
@@ -70,7 +72,7 @@ export default function LoginScreen({navigation}){
                     style={{ marginTop: 20, backgroundColor: 'orange' }}
                     icon="login"
                     mode="outlined"
-                    onPress={handleSignIn}
+                    onPress={handleSignIn} //nos permite ingresar 
                 >
                     Iniciar Sesión
                 </Button>
